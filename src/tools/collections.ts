@@ -6,8 +6,8 @@ import { ToolDefinition } from './types.js';
 
 export const collectionTools: ToolDefinition[] = [
   {
-    name: 'collections.list',
-    description: 'List collections via GET /v1/rest/collections.',
+    name: 'collections_list',
+    description: 'List collections via GET /v1/rest/collections_',
     schema: collectionsListSchema,
     handler: async (input, client) => {
       return client.request({
@@ -18,7 +18,7 @@ export const collectionTools: ToolDefinition[] = [
     }
   },
   {
-    name: 'collections.add_channels',
+    name: 'collections_add_channels',
     description: 'Add channels to a collection via POST /v1/rest/collections/:secondaryId/channels.',
     schema: collectionsAddChannelsSchema,
     handler: async (input, client) => {

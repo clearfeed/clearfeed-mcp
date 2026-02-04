@@ -8,7 +8,7 @@ import { ToolDefinition } from './types.js';
 
 export const customFieldTools: ToolDefinition[] = [
   {
-    name: 'custom_fields.list',
+    name: 'custom_fields_list',
     description: 'List custom fields via GET /v1/rest/custom-fields.',
     schema: customFieldListSchema,
     handler: async (input, client) => {
@@ -20,7 +20,7 @@ export const customFieldTools: ToolDefinition[] = [
     }
   },
   {
-    name: 'custom_fields.create',
+    name: 'custom_fields_create',
     description: 'Create a custom field via POST /v1/rest/custom-fields.',
     schema: customFieldCreateSchema,
     handler: async (input, client) => {
@@ -32,7 +32,7 @@ export const customFieldTools: ToolDefinition[] = [
     }
   },
   {
-    name: 'custom_fields.update',
+    name: 'custom_fields_update',
     description: 'Update a custom field via PUT /v1/rest/custom-fields/:id.',
     schema: customFieldUpdateSchema,
     handler: async (input, client) => {
@@ -45,7 +45,7 @@ export const customFieldTools: ToolDefinition[] = [
     }
   },
   {
-    name: 'custom_fields.delete',
+    name: 'custom_fields_delete',
     description: 'Delete a custom field via DELETE /v1/rest/custom-fields/:id.',
     schema: customFieldDeleteSchema,
     handler: async (input, client) => {

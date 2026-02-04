@@ -3,7 +3,7 @@ import { ToolDefinition } from './types.js';
 
 export const teamTools: ToolDefinition[] = [
   {
-    name: 'teams.list',
+    name: 'teams_list',
     description: 'List teams via GET /v1/rest/teams.',
     schema: teamListSchema,
     handler: async (input, client) => {
@@ -15,7 +15,7 @@ export const teamTools: ToolDefinition[] = [
     }
   },
   {
-    name: 'teams.get',
+    name: 'teams_get',
     description: 'Get a team via GET /v1/rest/teams/:secondaryId.',
     schema: teamGetSchema,
     handler: async (input, client) => {

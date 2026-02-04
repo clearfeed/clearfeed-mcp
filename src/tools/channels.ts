@@ -3,7 +3,7 @@ import { ToolDefinition } from './types.js';
 
 export const channelTools: ToolDefinition[] = [
   {
-    name: 'channels.update',
+    name: 'channels_update',
     description: 'Update channel via PATCH /v1/rest/channels/:externalId.',
     schema: channelUpdateSchema,
     handler: async (input, client) => {
@@ -16,7 +16,7 @@ export const channelTools: ToolDefinition[] = [
     }
   },
   {
-    name: 'channels.delete',
+    name: 'channels_delete',
     description: 'Delete channel via DELETE /v1/rest/channels/:externalId.',
     schema: channelDeleteSchema,
     handler: async (input, client) => {

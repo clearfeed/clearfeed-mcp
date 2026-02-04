@@ -13,7 +13,7 @@ const customerGetSchema = z.object({
 
 export const customerTools: ToolDefinition[] = [
   {
-    name: 'customers.list',
+    name: 'customers_list',
     description: 'List customers via GET /v1/rest/customers.',
     schema: customerListSchema,
     handler: async (input, client) => {
@@ -25,7 +25,7 @@ export const customerTools: ToolDefinition[] = [
     }
   },
   {
-    name: 'customers.search',
+    name: 'customers_search',
     description: 'Search customers via POST /v1/rest/customers/search.',
     schema: customerSearchSchema,
     handler: async (input, client) => {
@@ -37,7 +37,7 @@ export const customerTools: ToolDefinition[] = [
     }
   },
   {
-    name: 'customers.create',
+    name: 'customers_create',
     description: 'Create a customer via POST /v1/rest/customers.',
     schema: customerCreateSchema,
     handler: async (input, client) => {
@@ -49,7 +49,7 @@ export const customerTools: ToolDefinition[] = [
     }
   },
   {
-    name: 'customers.get',
+    name: 'customers_get',
     description: 'Get a customer via GET /v1/rest/customers/:id.',
     schema: customerGetSchema,
     handler: async (input, client) => {
@@ -60,7 +60,7 @@ export const customerTools: ToolDefinition[] = [
     }
   },
   {
-    name: 'customers.update',
+    name: 'customers_update',
     description: 'Update a customer via PATCH /v1/rest/customers/:id.',
     schema: customerUpdateSchema.extend({ id: z.number().int().min(1) }),
     handler: async (input, client) => {

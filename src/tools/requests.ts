@@ -10,7 +10,7 @@ import { ToolDefinition } from './types.js';
 
 export const requestTools: ToolDefinition[] = [
   {
-    name: 'requests.search',
+    name: 'requests_search',
     description: 'Search requests via GET /v1/rest/requests/search.',
     schema: requestSearchSchema,
     handler: async (input, client) => {
@@ -22,7 +22,7 @@ export const requestTools: ToolDefinition[] = [
     }
   },
   {
-    name: 'requests.list',
+    name: 'requests_list',
     description: 'List requests via GET /v1/rest/requests.',
     schema: requestListSchema,
     handler: async (input, client) => {
@@ -34,7 +34,7 @@ export const requestTools: ToolDefinition[] = [
     }
   },
   {
-    name: 'requests.get',
+    name: 'requests_get',
     description: 'Get a request by secondary id via GET /v1/rest/requests/:secondaryId.',
     schema: requestGetSchema,
     handler: async (input, client) => {
@@ -47,7 +47,7 @@ export const requestTools: ToolDefinition[] = [
     }
   },
   {
-    name: 'requests.create',
+    name: 'requests_create',
     description: 'Create a request via POST /v1/rest/requests (attachments not supported).',
     schema: requestCreateSchema,
     handler: async (input, client) => {
@@ -59,7 +59,7 @@ export const requestTools: ToolDefinition[] = [
     }
   },
   {
-    name: 'requests.update',
+    name: 'requests_update',
     description: 'Update a request via PATCH /v1/rest/requests/:secondaryId.',
     schema: requestUpdateSchema,
     handler: async (input, client) => {
@@ -72,7 +72,7 @@ export const requestTools: ToolDefinition[] = [
     }
   },
   {
-    name: 'requests.post_message',
+    name: 'requests_post_message',
     description: 'Post a message via POST /v1/rest/requests/:secondaryId/message (no attachments).',
     schema: requestPostMessageSchema,
     handler: async (input, client) => {
