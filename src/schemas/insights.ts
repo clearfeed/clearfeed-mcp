@@ -58,6 +58,8 @@ const measureValues = [
 const dimensionValues = [
   'Requests.state',
   'Requests.assignee_user_id',
+  'Requests.customer_id',
+  'Requests.customer_owner',
   'Requests.priority',
   'Requests.csat_score',
   'Requests.slack_channel_name',
@@ -96,24 +98,57 @@ const granularityValues = ['year', 'quarter', 'week', 'month', 'day'] as const;
 const externalFilterSchema = z.object({
   member: z
     .union([z.enum(filterMemberValues), z.string().min(1)])
-    .describe('Supports custom field members like Stories.custom_field_<id>'),
+    .describe(
+      'Field to filter on. Supports built-in request fields and custom fields like Stories.custom_field_<id>.'
+    ),
   operator: z.enum(operatorValues),
-  values: z.array(z.union([z.string(), z.null()])).optional()
+  values: z
+    .array(z.union([z.string(), z.null()]))
+    .optional()
+    .describe('Optional operator values. Omit for operators like `set` and `not_set`.')
 });
 
 const externalTimeDimensionSchema = z.object({
-  dimension: z.enum(timeDimensionValues),
-  granularity: z.enum(granularityValues).optional(),
-  date_range: z.union([z.string(), z.tuple([z.string(), z.string()])]).optional()
+  dimension: z
+    .enum(timeDimensionValues)
+    .describe('Time field to group or constrain by, such as Requests.created_at.'),
+  granularity: z
+    .enum(granularityValues)
+    .optional()
+    .describe('Optional bucket size for grouping, such as day, week, or month.'),
+  date_range: z
+    .union([z.string(), z.tuple([z.string(), z.string()])])
+    .optional()
+    .describe('Optional relative or absolute date range, for example `Last 30 days` or `[start, end]`.')
 });
 
-const externalCubeQuerySchema = z.object({
-  measures: z.array(z.enum(measureValues)).min(1),
-  time_dimensions: z.array(externalTimeDimensionSchema).min(1),
-  dimensions: z.array(z.union([z.enum(dimensionValues), z.string().min(1)])).optional().default([]),
-  filters: z.array(externalFilterSchema).optional().default([])
-});
+const externalCubeQuerySchema = z
+  .object({
+    measures: z
+      .array(z.enum(measureValues))
+      .min(1)
+      .describe('One or more metrics to return, such as request counts, SLA breaches, or response-time percentiles.'),
+    time_dimensions: z
+      .array(externalTimeDimensionSchema)
+      .min(1)
+      .describe('At least one time dimension is required for every insights query.'),
+    dimensions: z
+      .array(z.union([z.enum(dimensionValues), z.string().min(1)]))
+      .optional()
+      .default([])
+      .describe(
+        'Optional grouping fields. Supported request dimensions include Requests.state, Requests.assignee_user_id, Requests.customer_id, Requests.customer_owner, Requests.priority, Requests.csat_score, Requests.slack_channel_name, and Requests.collection_id.'
+      ),
+    filters: z
+      .array(externalFilterSchema)
+      .optional()
+      .default([])
+      .describe('Optional filters applied before aggregation.')
+  })
+  .describe('Cube-style analytics query for ClearFeed request insights.');
 
 export const insightsQuerySchema = z.object({
-  query: externalCubeQuerySchema
+  query: externalCubeQuerySchema.describe(
+    'Insights query payload. Combine measures with time_dimensions, then optionally add dimensions and filters.'
+  )
 });
