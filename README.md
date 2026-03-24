@@ -22,8 +22,11 @@ This MCP server exposes the following tool families and endpoints:
 | Channels | `channels_update` (PATCH /v1/rest/channels/:externalId); `channels_delete` (DELETE /v1/rest/channels/:externalId) |
 | Custom Fields | `custom_fields_list` (GET /v1/rest/custom-fields); `custom_fields_create` (POST /v1/rest/custom-fields); `custom_fields_update` (PUT /v1/rest/custom-fields/:id); `custom_fields_delete` (DELETE /v1/rest/custom-fields/:id) |
 | Teams | `teams_list` (GET /v1/rest/teams); `teams_get` (GET /v1/rest/teams/:secondaryId) |
+| Members | `members_list` (GET /v1/rest/members) |
 | Tickets | `tickets_get_form` (GET /v1/rest/tickets/forms/:id); `tickets_link` (POST /v1/rest/tickets) |
 | Insights | `insights_query` (POST /v1/rest/insights/query) |
+
+`insights_query` supports request dimensions including `Requests.customer_id` and `Requests.customer_owner`.
 
 ## Local setup
 
