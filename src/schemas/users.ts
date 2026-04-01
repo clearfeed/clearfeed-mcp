@@ -1,17 +1,17 @@
 import { z } from 'zod';
 
-export const memberListSchema = z
+export const userListSchema = z
   .object({
     ids: z
       .array(z.string().min(1))
       .max(100)
       .optional()
-      .describe('Resolve specific monitoring-system member IDs. Cannot be combined with `query`.'),
+      .describe('Resolve specific monitoring-system user IDs. Cannot be combined with `query`.'),
     query: z
       .string()
       .min(1)
       .optional()
-      .describe('Search members by name. Cannot be combined with `ids`.'),
+      .describe('Search users by name. Cannot be combined with `ids`.'),
     include_deleted: z
       .boolean()
       .optional()
