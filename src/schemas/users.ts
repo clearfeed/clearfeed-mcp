@@ -6,7 +6,7 @@ export const userListSchema = z
       .array(z.string().min(1))
       .max(100)
       .optional()
-      .describe('Resolve specific monitoring-system user IDs. Cannot be combined with `query`.'),
+      .describe('Resolve specific user IDs. Cannot be combined with `query`.'),
     query: z
       .string()
       .min(1)
