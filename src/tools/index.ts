@@ -7,7 +7,6 @@ import { collectionTools } from './collections.js';
 import { channelTools } from './channels.js';
 import { customFieldTools } from './custom-fields.js';
 import { teamTools } from './teams.js';
-import { userTools } from './users.js';
 import { ticketTools } from './tickets.js';
 import { insightsTools } from './insights.js';
 
@@ -18,7 +17,6 @@ export const toolDefinitions: ToolDefinition[] = [
   ...channelTools,
   ...customFieldTools,
   ...teamTools,
-  ...userTools,
   ...ticketTools,
   ...insightsTools
 ];
